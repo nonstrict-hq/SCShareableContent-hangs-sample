@@ -7,7 +7,26 @@ Rewriting to SCShareableContent.getWithCompletionHandler {} has the same issue, 
 
 This only happens occasionally. After developing a ScreenCaptureKit app for a while, and thus having started and killed many screen capture sessions.
 
-Rebooting the computer "fixes" the problem.
+## Workaround
+
+Restarting the ReplayKit deamon "fixes" the problem:
+
+```bash
+launchctl kickstart -k gui/501/com.apple.replayd
+```
+
+This can also be done from code:
+
+```swift
+let process = Process()
+process.executableURL = URL(filePath: "/bin/launchctl")
+process.arguments = ["kickstart", "-k", "gui/501/com.apple.replayd"]
+
+try process.run()
+```
+
+Alternatively, rebooting the computer also works.
+
 
 ## Feedback Assistant / Radar
 
