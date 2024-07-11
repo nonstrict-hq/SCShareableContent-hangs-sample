@@ -12,7 +12,7 @@ This only happens occasionally. After developing a ScreenCaptureKit app for a wh
 Restarting the ReplayKit deamon "fixes" the problem:
 
 ```bash
-launchctl kickstart -k gui/501/com.apple.replayd
+launchctl kickstart -k gui/$(id -u)/com.apple.replayd
 ```
 
 This can also be done from code:
@@ -20,7 +20,7 @@ This can also be done from code:
 ```swift
 let process = Process()
 process.executableURL = URL(filePath: "/bin/launchctl")
-process.arguments = ["kickstart", "-k", "gui/501/com.apple.replayd"]
+process.arguments = ["kickstart", "-k", "gui/\(getuid())/com.apple.replayd"]
 
 try process.run()
 ```
