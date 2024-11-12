@@ -30,7 +30,7 @@ Alternatively, rebooting the computer also works.
 
 ## Feedback Assistant / Radar
 
-Submitted as feedback to Apple with id: FB12114396
+Submitted as feedback to Apple with id: FB12114396, FB15779754
 
 ## Authors
 
